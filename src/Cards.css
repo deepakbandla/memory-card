@@ -1,0 +1,46 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem;
+    margin: 0.75rem;
+    border-radius: 16px;
+    /* background: rgba(255, 255, 255, 0.92); */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.pic {
+    width: 100%;
+    max-width: 220px;
+    margin-bottom: 1rem;
+}
+
+.pic img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.name h1 {
+    margin: 0 0 0.75rem;
+    font-size: 1.4rem;
+    text-transform: capitalize;
+}
+
+.details {
+    width: 100%;
+}
+
+.details h3 {
+    margin: 0.35rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+

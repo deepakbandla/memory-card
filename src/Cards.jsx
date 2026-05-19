@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import './Cards.css'
 
-function Card({ pokemon }) {
+function Card({ pokemon, onCardClick }) {
     let types = '';
     if (pokemon.types) {
         types = pokemon.types.map((t) => t.type.name).join(', ');
@@ -12,9 +12,9 @@ function Card({ pokemon }) {
     }
 
     return (
-        <div className="card">
+        <button className="card" onClick={() => onCardClick(pokemon.id)}>
             <div className="pic">
-                <img src={pokemon.sprites?.other?.["official-artwork"]?.front_default} />
+                <img src={pokemon.sprites?.other?.["official-artwork"]?.front_default} alt={pokemon.name} />
             </div>
             <div className="name">
                 <h1>{pokemon.name}</h1>
@@ -23,7 +23,7 @@ function Card({ pokemon }) {
                 <h3>Types: {types}</h3>
                 <h3>Abilities: {abilities}</h3>
             </div>
-        </div>
+        </button>
     );
 }
 

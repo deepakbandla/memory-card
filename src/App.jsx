@@ -14,6 +14,9 @@ async function fetchPokemon(pokemon) {
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
   
   useEffect(() => {
     const fetchAllPokemon = async () => {
@@ -23,10 +26,28 @@ function App() {
     };
     fetchAllPokemon();
   }, []);
+
+  const handleCardClick = (pokemonId) => {
+    if (clickedCards.includes(pokemonId)) {
+      // Card already clicked - game over
+      setScore(0);
+      setClickedCards([]);
+      // Optionally shuffle cards here
+    } else {
+      // New card clicked
+      const newClickedCards = [...clickedCards, pokemonId];
+      setClickedCards(newClickedCards);
+      const newScore = newClickedCards.length;
+      setScore(newScore);
+      setBestScore(Math.max(bestScore, newScore));
+    }
+  };
+
+  const shuffledPokemon = [...pokemonData].sort(() => Math.random() - 0.5);
   
   return (
     <>
-      <CardsHolder CardsList={pokemonData} />
+      <CardsHolder CardsList={shuffledPokemon} score={score} bestScore={bestScore} onCardClick={handleCardClick} />
     </>
   )
   
